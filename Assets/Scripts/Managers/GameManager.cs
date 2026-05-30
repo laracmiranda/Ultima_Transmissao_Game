@@ -4,6 +4,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform playerSpawnPoint;
     [Header("Game State")]
     public int naoAttempts = 0;
 
@@ -45,10 +47,17 @@ public class GameManager : MonoBehaviour
         GameOverUI.Instance.Show(message);
     }
 
+    // Mecânica para continuar jogo depois do gameover
     public void ContinueGame()
     {
         isGameOver = false;
-
+        RespawnPlayer();
         GameOverUI.Instance.Hide();
+    }
+
+    // Mecânica de respawn do player para posição inicial
+    private void RespawnPlayer()
+    {
+        player.position = playerSpawnPoint.position;
     }
 }
