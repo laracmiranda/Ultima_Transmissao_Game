@@ -30,4 +30,9 @@ public class NaoPushZone : MonoBehaviour
         // Marca que o player já foi empurrado e assim não repete o estado
         hasPushedPlayer = true;
     }
+
+    public void ResetPush()
+    {
+        hasPushedPlayer = false;
+    }
 }

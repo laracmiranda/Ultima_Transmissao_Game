@@ -51,8 +51,10 @@ public class GameManager : MonoBehaviour
     public void ContinueGame()
     {
         isGameOver = false;
-        RespawnPlayer();
         GameOverUI.Instance.Hide();
+        RespawnPlayer();
+        AttemptSystem.Instance.ResetAttemptEffects();
+        AttemptSystem.Instance.ApplyAttemptEffects(naoAttempts);
     }
 
     // Mecânica de respawn do player para posição inicial
