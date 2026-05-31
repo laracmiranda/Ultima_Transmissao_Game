@@ -48,6 +48,30 @@ public class AttemptSystem : MonoBehaviour
             case 3:
                 MakeNaoButtonTiny();
                 break;
+            
+            case 4:
+                TimerManager.Instance.StartTimer();
+                break;
+            
+            case 5:
+                TimerManager.Instance.StartTimer();
+                break;
+
+            case 6:
+                TimerManager.Instance.StartTimer();
+                break;
+            
+            case 7:
+                TimerManager.Instance.StartTimer();
+                break;
+
+            case 8:
+                TimerManager.Instance.StartTimer();
+                break;
+
+            case 9:
+                TimerManager.Instance.StartTimer();
+                break;
         }
     }
 
@@ -67,6 +91,12 @@ public class AttemptSystem : MonoBehaviour
 
         naoButton.position =
             tinyNaoPosition.position;
+    }
+
+    // Ativa o timer
+    private void ActivateTimer()
+    {
+        TimerManager.Instance.StartTimer();
     }
 
     // Reseta os estados dos botões para os originais

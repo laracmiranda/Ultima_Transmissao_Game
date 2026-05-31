@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [Header("Game State")]
     public int naoAttempts = 0;
 
+    private bool retryCurrentAttempt;
+
     public int CurrentAttempt
     {
         get
@@ -32,6 +34,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Confere se o tempo se esgotou no timer - Tentativas 5+
+    public void RegisterTimeOut()
+    {
+        isGameOver = true;
+
+        TimerManager.Instance.StopTimer();
+
+        GameOverUI.Instance.Show(
+            "O tempo acabou...\nVou assumir que isso foi um não."
+        );
+
+        retryCurrentAttempt = true;
+    }
+
     public void RegisterNaoAttempt()
     {
         if (naoAttempts >= MaxAttempts)
@@ -40,6 +56,7 @@ public class GameManager : MonoBehaviour
         naoAttempts++;
 
         isGameOver = true;
+        TimerManager.Instance.StopTimer();
 
         string message =
             GameTexts.NaoMessages[naoAttempts - 1];
@@ -50,6 +67,20 @@ public class GameManager : MonoBehaviour
     // Mecânica para continuar jogo depois do gameover
     public void ContinueGame()
     {
+
+        // Reseta a tentativa atual caso o tempo acabar - Tentativas 5+
+        if (retryCurrentAttempt)
+        {
+            retryCurrentAttempt = false;
+            isGameOver = false;
+            GameOverUI.Instance.Hide();
+            RespawnPlayer();
+            AttemptSystem.Instance.ResetAttemptEffects();
+            AttemptSystem.Instance.ApplyAttemptEffects(naoAttempts);
+            TimerManager.Instance.StartTimer();
+            return;
+        }
+
         isGameOver = false;
         GameOverUI.Instance.Hide();
         RespawnPlayer();
