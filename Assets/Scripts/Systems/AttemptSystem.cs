@@ -63,6 +63,7 @@ public class AttemptSystem : MonoBehaviour
 
             case 6:
                 TimerManager.Instance.StartTimer();
+                EnableDarkness();
                 break;
             
             case 7:
@@ -115,6 +116,12 @@ public class AttemptSystem : MonoBehaviour
         playerMovement.EnableInvertedControls();
     }
 
+    // Adiciona escuridão do mapa
+    private void EnableDarkness()
+    {
+        DarknessEffect.Instance.EnableDarkness();
+    }
+
     // Força que o estado seja reaplicado na tentativa quando der timeout
     public void ForceReapplyCurrentAttempt()
     {
@@ -128,5 +135,6 @@ public class AttemptSystem : MonoBehaviour
         naoButton.position = originalNaoPosition;
         naoButton.localScale = originalNaoScale;
         playerMovement.ResetPlayerState();
+        DarknessEffect.Instance.DisableDarkness();
     }
 }
