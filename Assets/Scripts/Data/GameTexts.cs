@@ -6,7 +6,7 @@ public static class GameTexts
         "Você fez denovo.. interessante. Vou garantir que o próximo você não se confunda!",
         "Você deveria estar apertando SIM agora. Acho que preciso deixar mais óbvio",
         "Você já tentou o outro botão brilhante?!",
-        "Acho que seu teclado está invertido...",
+        "Acho que seu teclado está invertido... vou arromar pra você!",
         "Ok. Já que você gosta de ficar no escuro. FIQUE!",
         "Por que está fazendo isso comigo?",
         "Achei que gostava de mim... e os momentos que passamos juntos?",
