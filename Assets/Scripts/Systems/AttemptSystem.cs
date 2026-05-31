@@ -11,6 +11,8 @@ public class AttemptSystem : MonoBehaviour
 
     [SerializeField] private Transform tinyNaoPosition;
 
+    [SerializeField] private PlayerMovement playerMovement;
+
     // Escala original do botão NÃO
     private Vector3 originalNaoScale;
 
@@ -42,15 +44,19 @@ public class AttemptSystem : MonoBehaviour
 
         switch (naoAttempts)
         {
+            // Botões trocam de lugar
             case 2:
                 break;
 
+            // Botão pequeno
             case 3:
                 MakeNaoButtonTiny();
                 break;
             
+            // Player lento
             case 4:
                 TimerManager.Instance.StartTimer();
+                EnableSlowMovement();
                 break;
             
             case 5:
@@ -99,11 +105,24 @@ public class AttemptSystem : MonoBehaviour
         TimerManager.Instance.StartTimer();
     }
 
-    // Reseta os estados dos botões para os originais
+    // Ativa a lentidão do player
+    private void EnableSlowMovement()
+    {
+        playerMovement.SetSpeed(1f);
+    }
+
+    // Força que o estado seja reaplicado na tentativa quando der timeout
+    public void ForceReapplyCurrentAttempt()
+    {
+        lastAppliedAttempt = -1;
+    }
+    
+    // Reseta os estados para os originais
     public void ResetAttemptEffects()
     {
         simButton.position = originalSimPosition;
         naoButton.position = originalNaoPosition;
         naoButton.localScale = originalNaoScale;
+        playerMovement.ResetSpeed();
     }
 }

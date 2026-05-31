@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
             GameOverUI.Instance.Hide();
             RespawnPlayer();
             AttemptSystem.Instance.ResetAttemptEffects();
+            AttemptSystem.Instance.ForceReapplyCurrentAttempt();
             AttemptSystem.Instance.ApplyAttemptEffects(naoAttempts);
             TimerManager.Instance.StartTimer();
             return;
