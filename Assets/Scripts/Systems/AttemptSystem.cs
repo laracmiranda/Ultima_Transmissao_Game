@@ -68,6 +68,9 @@ public class AttemptSystem : MonoBehaviour
             
             case 7:
                 TimerManager.Instance.StartTimer();
+                EnableGlitch();
+                EnableDarkness();
+                EnableSlowMovement();
                 break;
 
             case 8:
@@ -122,6 +125,12 @@ public class AttemptSystem : MonoBehaviour
         DarknessEffect.Instance.EnableDarkness();
     }
 
+    // Adiciona efeitos de glitch - flashes e tremor
+    private void EnableGlitch()
+    {
+        GlitchEffect.Instance.EnableGlitch();
+    }
+
     // Força que o estado seja reaplicado na tentativa quando der timeout
     public void ForceReapplyCurrentAttempt()
     {
@@ -136,5 +145,6 @@ public class AttemptSystem : MonoBehaviour
         naoButton.localScale = originalNaoScale;
         playerMovement.ResetPlayerState();
         DarknessEffect.Instance.DisableDarkness();
+        GlitchEffect.Instance.DisableGlitch();
     }
 }

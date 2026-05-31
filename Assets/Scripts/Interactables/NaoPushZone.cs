@@ -25,7 +25,7 @@ public class NaoPushZone : MonoBehaviour
             (other.transform.position - transform.position).normalized;
 
         other.transform.position +=
-            (Vector3)(direction * 2f);
+            (Vector3)(direction * 2.5f);
 
         // Marca que o player já foi empurrado e assim não repete o estado
         hasPushedPlayer = true;
