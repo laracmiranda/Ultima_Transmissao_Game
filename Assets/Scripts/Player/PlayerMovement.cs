@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movement;
+    private bool invertedControls;
 
     private void Awake()
     {
@@ -25,8 +26,20 @@ public class PlayerMovement : MonoBehaviour
         if (GameManager.Instance.isGameOver)
             return;
     
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        float horizontal =
+            Input.GetAxisRaw("Horizontal");
+
+        float vertical =
+            Input.GetAxisRaw("Vertical");
+
+        if (invertedControls)
+        {
+            horizontal *= -1;
+            vertical *= -1;
+        }
+
+        movement.x = horizontal;
+        movement.y = vertical;
     }
 
     private void FixedUpdate()
@@ -40,9 +53,21 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = speed;
     }
 
-    // Reseta a velocidade atual para a normal
-    public void ResetSpeed()
+    // Habilita/desabilita que os controles de movimento sejam invertidos
+    public void EnableInvertedControls()
+    {
+        invertedControls = true;
+    }
+
+    public void DisableInvertedControls()
+    {
+        invertedControls = false;
+    }  
+
+    // Reseta o estado do player para o original
+    public void ResetPlayerState()
     {
         currentSpeed = normalSpeed;
+        invertedControls = false;
     }
 }

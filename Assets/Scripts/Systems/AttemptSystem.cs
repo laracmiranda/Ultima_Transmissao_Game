@@ -44,16 +44,13 @@ public class AttemptSystem : MonoBehaviour
 
         switch (naoAttempts)
         {
-            // Botões trocam de lugar
             case 2:
                 break;
 
-            // Botão pequeno
             case 3:
                 MakeNaoButtonTiny();
                 break;
             
-            // Player lento
             case 4:
                 TimerManager.Instance.StartTimer();
                 EnableSlowMovement();
@@ -61,6 +58,7 @@ public class AttemptSystem : MonoBehaviour
             
             case 5:
                 TimerManager.Instance.StartTimer();
+                EnableInvertedControls();
                 break;
 
             case 6:
@@ -111,18 +109,24 @@ public class AttemptSystem : MonoBehaviour
         playerMovement.SetSpeed(1f);
     }
 
+    // Torna os controles de movimento do player invertidos - WASD
+    private void EnableInvertedControls()
+    {
+        playerMovement.EnableInvertedControls();
+    }
+
     // Força que o estado seja reaplicado na tentativa quando der timeout
     public void ForceReapplyCurrentAttempt()
     {
         lastAppliedAttempt = -1;
     }
-    
+
     // Reseta os estados para os originais
     public void ResetAttemptEffects()
     {
         simButton.position = originalSimPosition;
         naoButton.position = originalNaoPosition;
         naoButton.localScale = originalNaoScale;
-        playerMovement.ResetSpeed();
+        playerMovement.ResetPlayerState();
     }
 }
