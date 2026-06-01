@@ -64,6 +64,19 @@ public class GameManager : MonoBehaviour
         GameOverUI.Instance.Show(message);
     }
 
+    public void RegisterLaserHit()
+    {
+        isGameOver = true;
+
+        TimerManager.Instance.StopTimer();
+
+        GameOverUI.Instance.Show(
+            "Nem tente passar por aí.."
+        );
+
+        retryCurrentAttempt = true;
+    }
+
     // Mecânica para continuar jogo depois do gameover
     public void ContinueGame()
     {

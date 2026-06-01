@@ -13,6 +13,8 @@ public class AttemptSystem : MonoBehaviour
 
     [SerializeField] private PlayerMovement playerMovement;
 
+    [SerializeField] private LaserController laserController;
+
     // Escala original do botão NÃO
     private Vector3 originalNaoScale;
 
@@ -75,6 +77,7 @@ public class AttemptSystem : MonoBehaviour
 
             case 8:
                 TimerManager.Instance.StartTimer();
+                laserController.EnableLaser();
                 break;
 
             case 9:
@@ -146,5 +149,6 @@ public class AttemptSystem : MonoBehaviour
         playerMovement.ResetPlayerState();
         DarknessEffect.Instance.DisableDarkness();
         GlitchEffect.Instance.DisableGlitch();
+        laserController.DisableLaser();
     }
 }
