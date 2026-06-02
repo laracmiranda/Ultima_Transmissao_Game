@@ -5,6 +5,7 @@ public class AttemptSystem : MonoBehaviour
 {
     public static AttemptSystem Instance;
 
+    // Referências
     [SerializeField] private Transform simButton;
     [SerializeField] private Transform naoButton;
     [SerializeField] private SwapZone swapZone;
@@ -13,7 +14,10 @@ public class AttemptSystem : MonoBehaviour
 
     [SerializeField] private PlayerMovement playerMovement;
 
-    [SerializeField] private LaserController laserController;
+    // Lasers
+    [SerializeField] private LaserController laserBottom;
+    [SerializeField] private LaserController laserMiddle;
+    [SerializeField] private LaserController laserTop;
 
     // Escala original do botão NÃO
     private Vector3 originalNaoScale;
@@ -77,11 +81,12 @@ public class AttemptSystem : MonoBehaviour
 
             case 8:
                 TimerManager.Instance.StartTimer();
-                laserController.EnableLaser();
+                laserBottom.EnableLaser();
+                laserMiddle.EnableLaser();
+                laserTop.EnableLaser();
                 break;
 
             case 9:
-                TimerManager.Instance.StartTimer();
                 break;
         }
     }
@@ -133,6 +138,14 @@ public class AttemptSystem : MonoBehaviour
     {
         GlitchEffect.Instance.EnableGlitch();
     }
+    
+    // Desabilita todos os lasers
+    public void DisableAllLasers()
+    {
+        laserBottom.DisableLaser();
+        laserMiddle.DisableLaser();
+        laserTop.DisableLaser();
+    }
 
     // Força que o estado seja reaplicado na tentativa quando der timeout
     public void ForceReapplyCurrentAttempt()
@@ -149,6 +162,10 @@ public class AttemptSystem : MonoBehaviour
         playerMovement.ResetPlayerState();
         DarknessEffect.Instance.DisableDarkness();
         GlitchEffect.Instance.DisableGlitch();
-        laserController.DisableLaser();
+
+        // Desabilita todos os lasers
+        laserBottom.DisableLaser();
+        laserMiddle.DisableLaser();
+        laserTop.DisableLaser();
     }
 }

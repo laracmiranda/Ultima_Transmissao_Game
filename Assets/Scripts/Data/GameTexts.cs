@@ -16,7 +16,8 @@ public static class GameTexts
 
     public static readonly string[] SimMessages =
     {
-        "De verdade? Nunca cheguei nessa parte... fico feliz que aceitou <3",
-        "Você finalmente tomou a decisão correta."
+        "De verdade? Fico feliz de ter sido sua primeira escolha <3",
+        "Você finalmente tomou a decisão correta!",
+        "Parece que te enganei muehehe.. <3",
     };
 }

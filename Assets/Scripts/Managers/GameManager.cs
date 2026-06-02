@@ -66,10 +66,16 @@ public class GameManager : MonoBehaviour
 
     public void RegisterLaserHit()
     {
+
+        if (isGameOver)
+            return;
+            
         isGameOver = true;
 
-        TimerManager.Instance.StopTimer();
+        AttemptSystem.Instance.DisableAllLasers();
 
+        TimerManager.Instance.StopTimer();
+        
         GameOverUI.Instance.Show(
             "Nem tente passar por aí.."
         );
