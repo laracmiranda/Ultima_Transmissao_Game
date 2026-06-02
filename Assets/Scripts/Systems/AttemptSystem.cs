@@ -5,13 +5,16 @@ public class AttemptSystem : MonoBehaviour
 {
     public static AttemptSystem Instance;
 
-    // Referências
+    // -- Referências --
+
+    // Botões
     [SerializeField] private Transform simButton;
     [SerializeField] private Transform naoButton;
-    [SerializeField] private SwapZone swapZone;
-
     [SerializeField] private Transform tinyNaoPosition;
+    [SerializeField] private SwapZone swapZone;
+    [SerializeField] private Transform centerPosition;
 
+    // Player
     [SerializeField] private PlayerMovement playerMovement;
 
     // Lasers
@@ -29,6 +32,7 @@ public class AttemptSystem : MonoBehaviour
     private Vector3 originalSimPosition;
     private Vector3 originalNaoPosition;
 
+    // O que o jogo faz quando inicia
     private void Awake()
     {
         Instance = this;
@@ -41,6 +45,7 @@ public class AttemptSystem : MonoBehaviour
         originalNaoScale = naoButton.localScale;
     }
 
+    // Aplica os efeitos das tentativas
     public void ApplyAttemptEffects(int naoAttempts)
     {
         if (lastAppliedAttempt == naoAttempts)
@@ -87,9 +92,16 @@ public class AttemptSystem : MonoBehaviour
                 break;
 
             case 9:
+                ShowOnlyNaoButton();
+                break;
+
+            case 10:
+                ShowOnlySimButton();
                 break;
         }
     }
+
+    // -- Mecânicas --
 
     // Inverte a posição dos botões
     public void SwapButtons()
@@ -103,7 +115,7 @@ public class AttemptSystem : MonoBehaviour
     private void MakeNaoButtonTiny()
     {
         naoButton.localScale =
-            new Vector3(0.2f, 0.2f, 1f);
+            new Vector3(0.2f, 0.5f, 1f);
 
         naoButton.position =
             tinyNaoPosition.position;
@@ -147,6 +159,30 @@ public class AttemptSystem : MonoBehaviour
         laserTop.DisableLaser();
     }
 
+    // Exibe apenas o botão NÃO
+    public void ShowOnlyNaoButton()
+    {
+        simButton.gameObject.SetActive(false);
+
+        naoButton.gameObject.SetActive(true);
+
+        naoButton.position =
+            centerPosition.position;
+    }
+
+    // Exibe apenas o botão SIM 
+    public void ShowOnlySimButton()
+    {
+        naoButton.gameObject.SetActive(false);
+
+        simButton.gameObject.SetActive(true);
+
+        simButton.position =
+            centerPosition.position;
+    }
+
+    // -- Resets --
+
     // Força que o estado seja reaplicado na tentativa quando der timeout
     public void ForceReapplyCurrentAttempt()
     {
@@ -156,6 +192,8 @@ public class AttemptSystem : MonoBehaviour
     // Reseta os estados para os originais
     public void ResetAttemptEffects()
     {
+        simButton.gameObject.SetActive(true);
+        naoButton.gameObject.SetActive(true);
         simButton.position = originalSimPosition;
         naoButton.position = originalNaoPosition;
         naoButton.localScale = originalNaoScale;
