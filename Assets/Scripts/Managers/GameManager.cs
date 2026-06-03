@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -51,13 +52,21 @@ public class GameManager : MonoBehaviour
     // Registra as tentativas de apertar no botão NÃO
     public void RegisterNaoAttempt()
     {
+        StartCoroutine(RegisterNaoAttemptRoutine());
+    }
+
+    private IEnumerator RegisterNaoAttemptRoutine()
+    {
         if (naoAttempts >= MaxAttempts)
-            return;
+            yield break;
 
         naoAttempts++;
 
         isGameOver = true;
+
         TimerManager.Instance.StopTimer();
+
+        yield return new WaitForSeconds(0.8f);
 
         string message =
             GameTexts.NaoMessages[naoAttempts - 1];
