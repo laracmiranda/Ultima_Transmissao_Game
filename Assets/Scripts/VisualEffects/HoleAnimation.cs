@@ -7,8 +7,8 @@ public class HoleAnimation : MonoBehaviour
 
     private Vector3 originalScale;
 
-    [SerializeField]
-    private Transform holeTransform;
+    [SerializeField] private Transform holeTransform;
+    [SerializeField] private Transform naoButton;
 
     private void Awake()
     {
@@ -18,6 +18,9 @@ public class HoleAnimation : MonoBehaviour
 
     public IEnumerator PlayHoleAnimation()
     {
+        // Faz com que buraco apareça onde o botão NÃO está
+        transform.position = naoButton.position;
+
         gameObject.SetActive(true);
 
         holeTransform.localScale = Vector3.zero;
