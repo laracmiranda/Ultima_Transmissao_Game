@@ -42,7 +42,7 @@ public static class GameTexts
         "Sabia que você tinha se confundido. Às vezes tudo o que precisamos é de uma segunda chance. <3",
 
         // Tentativa 3
-        "Viu só? Eu estava aqui o tempo todo esperando você voltar. <3",
+        "Te enganei, muehehe! \nEu estava aqui o tempo todo esperando você voltar. <3",
 
         // Tentativa 4
         "Mesmo depois de tudo, você acabou me encontrando. Impressionante. <3",
@@ -63,6 +63,6 @@ public static class GameTexts
         "Você enfrentou tudo o que eu pude inventar. Acho que já provou seu ponto. <3",
 
         // Tentativa 10
-        "Eu sabia que, no fim, seria eu. Obrigado por ficar até aqui. ❤️"
+        "Eu sabia que, no fim, seria eu. Obrigado por ficar até aqui. <3"
     };
 }

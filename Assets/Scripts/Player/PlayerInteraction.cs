@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour
         switch (currentInteractable.buttonType)
         {
             case ButtonType.Sim:
-                Debug.Log("CLICOU NO SIM");
+                GameManager.Instance.RegisterSimChoice();
                 break;
 
             case ButtonType.Nao:

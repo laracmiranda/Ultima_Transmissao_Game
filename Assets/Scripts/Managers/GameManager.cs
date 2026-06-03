@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         retryCurrentAttempt = true;
     }
 
+    // Registra as tentativas de apertar no botão NÃO
     public void RegisterNaoAttempt()
     {
         if (naoAttempts >= MaxAttempts)
@@ -62,6 +63,29 @@ public class GameManager : MonoBehaviour
             GameTexts.NaoMessages[naoAttempts - 1];
 
         GameOverUI.Instance.Show(message);
+    }
+
+    // Registra em qual tentativa o botão SIM foi pressionado
+    public void RegisterSimChoice()
+    {
+        isGameOver = true;
+        AttemptSystem.Instance.DisableAllLasers();
+        TimerManager.Instance.StopTimer();
+
+        int messageIndex;
+
+        // Verifica se está na tentativa final para exibir a mensagem correta
+        if (naoAttempts == 10)
+        {
+            messageIndex = 9;
+        } else
+        {
+            messageIndex = naoAttempts;
+        }
+
+        VictoryUI.Instance.Show(
+            GameTexts.SimMessages[messageIndex]
+        );
     }
 
     public void RegisterLaserHit()
