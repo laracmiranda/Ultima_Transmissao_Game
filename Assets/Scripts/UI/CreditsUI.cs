@@ -5,6 +5,9 @@ public class CreditsUI : MonoBehaviour
     public static CreditsUI Instance;
     private bool showingCredits;
 
+    private bool canExit;
+
+
     [SerializeField] private GameObject panel;
 
     private void Awake()
@@ -16,6 +19,9 @@ public class CreditsUI : MonoBehaviour
     {
         panel.SetActive(true);
         showingCredits = true;
+
+        canExit = false;
+        Invoke(nameof(EnableExit), 0.3f);
     }
 
     // Jogo encerra após exibição dos créditos
@@ -24,10 +30,18 @@ public class CreditsUI : MonoBehaviour
         if (!showingCredits)
             return;
 
+        if (!canExit)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Return))
         {
             QuitGame();
         }
+    }
+
+    private void EnableExit()
+    {
+        canExit = true;
     }
 
     private void QuitGame()
@@ -40,5 +54,7 @@ public class CreditsUI : MonoBehaviour
     public void Hide()
     {
         panel.SetActive(false);
+        showingCredits = false;
+        canExit = false;
     }
 }
