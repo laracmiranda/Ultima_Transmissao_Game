@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerSpawnPoint;
+
+    [SerializeField] private HoleAnimation holeAnimation;
+
+    private Vector3 originalPlayerScale;
+
     [Header("Game State")]
     public int naoAttempts = 0;
 
@@ -28,6 +33,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            originalPlayerScale = player.localScale;
         }
         else
         {
@@ -66,7 +72,17 @@ public class GameManager : MonoBehaviour
 
         TimerManager.Instance.StopTimer();
 
-        yield return new WaitForSeconds(0.8f);
+        yield return StartCoroutine(
+            holeAnimation.PlayHoleAnimation()
+        );
+
+        yield return new WaitForSeconds(0.5f);
+
+        yield return StartCoroutine(
+            FallAnimation()
+        );
+
+        yield return new WaitForSeconds(0.3f);
 
         string message =
             GameTexts.NaoMessages[naoAttempts - 1];
@@ -117,6 +133,33 @@ public class GameManager : MonoBehaviour
         retryCurrentAttempt = true;
     }
 
+    // Animação de queda após apertar o botão NÃO
+    private IEnumerator FallAnimation()
+    {
+        float duration = 0.5f;
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float progress =
+                elapsed / duration;
+
+            player.localScale =
+                Vector3.Lerp(
+                    originalPlayerScale,
+                    Vector3.zero,
+                    progress
+                );
+
+            yield return null;
+        }
+
+        player.localScale = Vector3.zero;
+    }
+
     // Mecânica para continuar jogo depois do gameover
     public void ContinueGame()
     {
@@ -142,9 +185,11 @@ public class GameManager : MonoBehaviour
         AttemptSystem.Instance.ApplyAttemptEffects(naoAttempts);
     }
 
-    // Mecânica de respawn do player para posição inicial
+    // Mecânica de respawn do player para estado inicial
     private void RespawnPlayer()
     {
         player.position = playerSpawnPoint.position;
+        player.localScale = originalPlayerScale;
+        holeAnimation.Hide();
     }
 }
