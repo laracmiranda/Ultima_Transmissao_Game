@@ -15,6 +15,7 @@ public class GameOverUI : MonoBehaviour
 
     public void Show(string message)
     {
+        InteractionUI.Instance.Hide();
         panel.SetActive(true);
         gameOverText.text = message;
     }

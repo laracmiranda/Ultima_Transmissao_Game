@@ -1,16 +1,24 @@
+using TMPro;
 using UnityEngine;
 
 public class InteractionUI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static InteractionUI Instance;
+
+    [SerializeField] private GameObject interactionText;
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Show()
     {
-        
+        interactionText.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        interactionText.SetActive(false);
     }
 }

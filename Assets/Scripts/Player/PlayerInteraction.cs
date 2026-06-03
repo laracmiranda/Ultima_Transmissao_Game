@@ -36,11 +36,8 @@ public class PlayerInteraction : MonoBehaviour
         if (interactable != null)
         {
             currentInteractable = interactable;
+            InteractionUI.Instance.Show();
 
-            Debug.Log(
-                "Perto de: " +
-                interactable.buttonType
-            );
         }
     }
 
@@ -54,7 +51,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             currentInteractable = null;
 
-            Debug.Log("Saiu da área");
+            InteractionUI.Instance.Hide();
         }
     }
 }

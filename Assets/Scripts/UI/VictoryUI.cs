@@ -18,6 +18,8 @@ public class VictoryUI : MonoBehaviour
 
     public void Show(string message)
     {
+        InteractionUI.Instance.Hide();
+        
         panel.SetActive(true);
 
         victoryText.text = message;
