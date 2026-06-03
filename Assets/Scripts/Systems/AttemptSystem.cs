@@ -115,7 +115,7 @@ public class AttemptSystem : MonoBehaviour
     private void MakeNaoButtonTiny()
     {
         naoButton.localScale =
-            new Vector3(0.2f, 0.5f, 1f);
+            new Vector3(0.4f, 0.2f, 1f);
 
         naoButton.position =
             tinyNaoPosition.position;

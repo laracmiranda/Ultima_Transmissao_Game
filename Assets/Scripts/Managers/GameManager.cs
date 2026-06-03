@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
         );
     }
 
+    // GameOver personalizado para caso o player seja atingido pelo laser
     public void RegisterLaserHit()
     {
 
