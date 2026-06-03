@@ -6,6 +6,8 @@ public class NaoPushZone : MonoBehaviour
 
     private bool hasPushedPlayer;
 
+    [SerializeField] private float pushDistance = 5f;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -25,7 +27,7 @@ public class NaoPushZone : MonoBehaviour
             (other.transform.position - transform.position).normalized;
 
         other.transform.position +=
-            (Vector3)(direction * 2.5f);
+            (Vector3)(direction * pushDistance);
 
         // Marca que o player já foi empurrado e assim não repete o estado
         hasPushedPlayer = true;
