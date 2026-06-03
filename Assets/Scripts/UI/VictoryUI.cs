@@ -4,6 +4,7 @@ using UnityEngine;
 public class VictoryUI : MonoBehaviour
 {
     public static VictoryUI Instance;
+    private bool showingVictory;
 
     // Referências
     [SerializeField] private GameObject panel;
@@ -20,8 +21,25 @@ public class VictoryUI : MonoBehaviour
         panel.SetActive(true);
 
         victoryText.text = message;
+
+        showingVictory = true;
     }
 
+    private void Update()
+    {
+        if (!showingVictory)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            showingVictory = false;
+
+            Hide();
+
+            CreditsUI.Instance.Show();
+        }
+    }
+    
     public void Hide()
     {
         panel.SetActive(false);
