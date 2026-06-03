@@ -9,7 +9,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField] private GameObject timerTextObject;
     [SerializeField] private TMP_Text timerText;
 
-    [SerializeField] private float maxTime = 15f;
+    [SerializeField] private float maxTime = 10f;
 
     private float currentTime;
     private bool timerRunning;
