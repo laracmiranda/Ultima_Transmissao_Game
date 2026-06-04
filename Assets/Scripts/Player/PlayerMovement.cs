@@ -64,6 +64,20 @@ public class PlayerMovement : MonoBehaviour
         invertedControls = false;
     }  
 
+    // Ativa/desativa o movimento do player
+    public void DisableMovement()
+    {
+        movement = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
+
+        enabled = false;
+    }
+
+    public void EnableMovement()
+    {
+        enabled = true;
+    }
+
     // Reseta o estado do player para o original
     public void ResetPlayerState()
     {

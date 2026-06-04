@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerSpawnPoint;
+    [SerializeField] private PlayerMovement playerMovement;
 
     [SerializeField] private HoleAnimation holeAnimation;
 
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
         naoAttempts++;
 
         isGameOver = true;
-
+        playerMovement.DisableMovement();
         TimerManager.Instance.StopTimer();
 
         yield return StartCoroutine(
@@ -190,6 +191,7 @@ public class GameManager : MonoBehaviour
     {
         player.position = playerSpawnPoint.position;
         player.localScale = originalPlayerScale;
+        playerMovement.EnableMovement();
         holeAnimation.Hide();
     }
 }
