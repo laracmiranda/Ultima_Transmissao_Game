@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameManager.Instance.isGameOver)
             return;
+
+        if (StartUI.Instance != null &&
+            StartUI.Instance.IsWaitingForStart())
+            return;
     
         float horizontal =
             Input.GetAxisRaw("Horizontal");
