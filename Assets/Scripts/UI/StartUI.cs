@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class StartUI : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class StartUI : MonoBehaviour
     private void Start()
     {
         panel.SetActive(true);
+
+        StartCoroutine(FadeUI.Instance.FadeInRoutine());
     }
 
     private void Update()
@@ -31,9 +34,22 @@ public class StartUI : MonoBehaviour
 
     private void StartGame()
     {
-        waitingForStart = false;
+        StartCoroutine(StartGameRoutine());
+    }
+
+    private IEnumerator StartGameRoutine()
+    {
+        yield return StartCoroutine(
+            FadeUI.Instance.FadeOutRoutine()
+        );
 
         panel.SetActive(false);
+
+        yield return StartCoroutine(
+            FadeUI.Instance.FadeInRoutine()
+        );
+
+        waitingForStart = false;
     }
 
     public bool IsWaitingForStart()
