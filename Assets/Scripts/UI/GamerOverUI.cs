@@ -9,6 +9,7 @@ public class GameOverUI : MonoBehaviour
 
     [SerializeField] private GameObject panel;
     [SerializeField] private TMP_Text gameOverText;
+    [SerializeField] private TypewriterEffect typewriterEffect;
 
     [SerializeField] private RectTransform fallingPlayer;
     private Coroutine fallingRoutine;
@@ -22,7 +23,7 @@ public class GameOverUI : MonoBehaviour
     {
         InteractionUI.Instance.Hide();
         panel.SetActive(true);
-        gameOverText.text = message;
+        typewriterEffect.ShowText(message);
 
         if (fallingRoutine != null)
         {
