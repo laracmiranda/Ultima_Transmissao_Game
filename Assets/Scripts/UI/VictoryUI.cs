@@ -10,6 +10,7 @@ public class VictoryUI : MonoBehaviour
     [SerializeField] private GameObject panel;
 
     [SerializeField] private TMP_Text victoryText;
+    [SerializeField] private TypewriterEffect typewriterEffect;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class VictoryUI : MonoBehaviour
         
         panel.SetActive(true);
 
-        victoryText.text = message;
+        typewriterEffect.ShowText(message);
 
         showingVictory = true;
     }
