@@ -14,10 +14,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     private bool invertedControls;
 
+    private Animator animator;
+
+    private SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentSpeed = normalSpeed;
     }
 
@@ -44,6 +49,19 @@ public class PlayerMovement : MonoBehaviour
 
         movement.x = horizontal;
         movement.y = vertical;
+
+        // Verifica o lado que o player está virado para ajustar a animação
+        if (horizontal > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (horizontal < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        bool isMoving = movement.sqrMagnitude > 0;
+        animator.SetBool("IsMoving", isMoving);
     }
 
     private void FixedUpdate()
