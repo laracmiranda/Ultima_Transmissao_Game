@@ -36,33 +36,33 @@ public static class GameTexts
     public static readonly string[] SimMessages =
     {
         // Tentativa 1
-        "De verdade? Fico feliz de ter sido sua primeira escolha. <3",
+        "De verdade? Fico feliz de ter sido sua primeira escolha. ♥",
 
         // Tentativa 2
-        "Sabia que você tinha se confundido. Às vezes tudo o que precisamos é de uma segunda chance. <3",
+        "Sabia que você tinha se confundido. Às vezes tudo o que precisamos é de uma segunda chance. ♥",
 
         // Tentativa 3
-        "Te enganei, muehehe! \nEu estava aqui o tempo todo esperando você voltar. <3",
+        "Te enganei, muehehe! \nEu estava aqui o tempo todo esperando você voltar. ♥",
 
         // Tentativa 4
-        "Mesmo depois de tudo, você acabou me encontrando. Impressionante. <3",
+        "Mesmo depois de tudo, você acabou me encontrando. Impressionante. ♥",
 
         // Tentativa 5
-        "O tempo estava correndo... mas você ainda escolheu ficar. <3",
+        "O tempo estava correndo... mas você ainda escolheu ficar. ♥",
 
         // Tentativa 6
-        "Mesmo quando tudo parecia ao contrário, você encontrou o caminho. <3",
+        "Mesmo quando tudo parecia ao contrário, você encontrou o caminho. ♥",
 
         // Tentativa 7
-        "Nem a escuridão conseguiu esconder o que realmente importava. <3",
+        "Nem a escuridão conseguiu esconder o que realmente importava. ♥",
 
         // Tentativa 8
-        "O mundo inteiro parecia quebrado, mas você continuou tentando. <3",
+        "O mundo inteiro parecia quebrado, mas você continuou tentando. ♥",
 
         // Tentativa 9
-        "Você enfrentou tudo o que eu pude inventar. Acho que já provou seu ponto. <3",
+        "Você enfrentou tudo o que eu pude inventar. Acho que já provou seu ponto. ♥",
 
         // Tentativa 10
-        "Eu sabia que, no fim, seria eu. Obrigado por ficar até aqui. <3"
+        "Eu sabia que, no fim, seria eu. Obrigado por ficar até aqui. ♥"
     };
 }
