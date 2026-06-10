@@ -6,7 +6,7 @@ public class NaoPushZone : MonoBehaviour
 
     private bool hasPushedPlayer;
 
-    [SerializeField] private float pushDistance = 3f;
+    [SerializeField] private float pushDistance = 3.2f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
