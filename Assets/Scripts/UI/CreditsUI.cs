@@ -33,11 +33,9 @@ public class CreditsUI : MonoBehaviour
 
         showingCredits = true;
         quitText.SetActive(false);
-        
-        StartCoroutine(ScrollCredits());
 
         canExit = false;
-        Invoke(nameof(EnableExit), 0.3f);
+        StartCoroutine(ScrollCredits());
     }
 
     // Jogo encerra após exibição dos créditos
