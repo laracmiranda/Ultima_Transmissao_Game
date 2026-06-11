@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour
         naoAttempts++;
         naoButtonVisual.SetClicked();
 
+        AudioManager.Instance.PlayButtonClick();
+
         isGameOver = true;
         playerMovement.DisableMovement();
         TimerManager.Instance.StopTimer();
@@ -101,6 +103,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator RegisterSimChoiceRoutine()
     {
         simButtonVisual.SetClicked();
+
+        AudioManager.Instance.PlayButtonClick();
 
         isGameOver = true;
         AttemptSystem.Instance.DisableAllLasers();
