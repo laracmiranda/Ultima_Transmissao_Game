@@ -97,16 +97,6 @@ Packages/packages-lock.json linguist-generated
 *.stl                   lfs
 *.ztl                   lfs
 
-# Audio
-*.aif                   lfs
-*.aiff                  lfs
-*.it                    lfs
-*.mod                   lfs
-*.ogg                   lfs
-*.s3m                   lfs
-*.wav                   lfs
-*.xm                    lfs
-
 # Video
 *.asf                   lfs
 *.avi                   lfs
