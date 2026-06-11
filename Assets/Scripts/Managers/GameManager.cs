@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
         TimerManager.Instance.StopTimer();
 
         yield return new WaitForSeconds(0.4f);
+        AudioManager.Instance.PlayHoleSound();
         yield return StartCoroutine(holeAnimation.PlayHoleAnimation());
 
         yield return new WaitForSeconds(0.2f);

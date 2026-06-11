@@ -8,6 +8,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip buttonClick;
 
+
+    [SerializeField] private AudioClip holeSound;
+
     private void Awake()
     {
         Instance = this;
@@ -16,5 +19,10 @@ public class AudioManager : MonoBehaviour
     public void PlayButtonClick()
     {
         audioSource.PlayOneShot(buttonClick);
+    }
+
+    public void PlayHoleSound()
+    {
+        audioSource.PlayOneShot(holeSound);
     }
 }
