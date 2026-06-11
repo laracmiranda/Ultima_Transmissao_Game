@@ -11,6 +11,7 @@ public class VictoryUI : MonoBehaviour
 
     [SerializeField] private TMP_Text victoryText;
     [SerializeField] private TypewriterEffect typewriterEffect;
+    [SerializeField] private VictoryAnimator victoryAnimator;
 
     private void Awake()
     {
@@ -23,8 +24,13 @@ public class VictoryUI : MonoBehaviour
         
         panel.SetActive(true);
 
-        typewriterEffect.ShowText(message);
+        StartCoroutine(victoryAnimator.PlaySequence(message));
 
+        showingVictory = true;
+    }
+
+    public void EnableContinue()
+    {
         showingVictory = true;
     }
 
