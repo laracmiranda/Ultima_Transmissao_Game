@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 873042481
     locked: 0
+  - name: Buttons
+    uniqueID: 470457527
+    locked: 0
   - name: World
     uniqueID: 3209629183
     locked: 0

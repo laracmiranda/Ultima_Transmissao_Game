@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private HoleAnimation holeAnimation;
 
+    [SerializeField] private ButtonVisual simButtonVisual;
+    [SerializeField] private ButtonVisual naoButtonVisual;
+
     private Vector3 originalPlayerScale;
 
     [Header("Game State")]
@@ -68,22 +71,20 @@ public class GameManager : MonoBehaviour
             yield break;
 
         naoAttempts++;
+        naoButtonVisual.SetClicked();
 
         isGameOver = true;
         playerMovement.DisableMovement();
         TimerManager.Instance.StopTimer();
 
-        yield return StartCoroutine(
-            holeAnimation.PlayHoleAnimation()
-        );
+        yield return new WaitForSeconds(0.4f);
+        yield return StartCoroutine(holeAnimation.PlayHoleAnimation());
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
-        yield return StartCoroutine(
-            FallAnimation()
-        );
+        player.localScale = Vector3.zero;
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
 
         string message =
             GameTexts.NaoMessages[naoAttempts - 1];
@@ -94,17 +95,27 @@ public class GameManager : MonoBehaviour
     // Registra em qual tentativa o botão SIM foi pressionado
     public void RegisterSimChoice()
     {
+        StartCoroutine(RegisterSimChoiceRoutine());
+    }
+
+    private IEnumerator RegisterSimChoiceRoutine()
+    {
+        simButtonVisual.SetClicked();
+
         isGameOver = true;
         AttemptSystem.Instance.DisableAllLasers();
         TimerManager.Instance.StopTimer();
 
+        yield return new WaitForSeconds(0.2f);
+
         int messageIndex;
 
-        // Verifica se está na tentativa final para exibir a mensagem correta
+        // Verifica se está na última tentativa para ajustar a mensagem
         if (naoAttempts == 10)
         {
             messageIndex = 9;
-        } else
+        }
+        else
         {
             messageIndex = naoAttempts;
         }
@@ -132,33 +143,6 @@ public class GameManager : MonoBehaviour
         );
 
         retryCurrentAttempt = true;
-    }
-
-    // Animação de queda após apertar o botão NÃO
-    private IEnumerator FallAnimation()
-    {
-        float duration = 0.5f;
-
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-
-            float progress =
-                elapsed / duration;
-
-            player.localScale =
-                Vector3.Lerp(
-                    originalPlayerScale,
-                    Vector3.zero,
-                    progress
-                );
-
-            yield return null;
-        }
-
-        player.localScale = Vector3.zero;
     }
 
     // Mecânica para continuar jogo depois do gameover
@@ -192,6 +176,8 @@ public class GameManager : MonoBehaviour
         player.position = playerSpawnPoint.position;
         player.localScale = originalPlayerScale;
         playerMovement.EnableMovement();
+        simButtonVisual.ResetButton();
+        naoButtonVisual.ResetButton();
         holeAnimation.Hide();
     }
 }

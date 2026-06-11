@@ -16,38 +16,17 @@ public class HoleAnimation : MonoBehaviour
         originalScale = holeTransform.localScale;
     }
 
-    public IEnumerator PlayHoleAnimation()
+    // Animação do buraco se abrindo quando o jogador aperta o botão NÃO
+   public IEnumerator PlayHoleAnimation()
     {
-        // Faz com que buraco apareça onde o botão NÃO está
         transform.position = naoButton.position;
 
         gameObject.SetActive(true);
 
-        holeTransform.localScale = Vector3.zero;
-
-        float duration = 0.3f;
-
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-
-            float progress =
-                elapsed / duration;
-
-            holeTransform.localScale =
-                Vector3.Lerp(
-                    Vector3.zero,
-                    originalScale,
-                    progress
-                );
-
-            yield return null;
-        }
-
         holeTransform.localScale =
             originalScale;
+
+        yield return null;
     }
 
     public void Hide()
