@@ -45,25 +45,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Confere se o tempo se esgotou no timer - Tentativas 5+
-    public void RegisterTimeOut()
-    {
-        isGameOver = true;
-        
-        InteractionUI.Instance.Hide();
-        playerMovement.DisableMovement();
-        TimerManager.Instance.StopTimer();
-        AttemptSystem.Instance.DisableAllLasers();
-
-        GameOverUI.Instance.Show(
-            "O tempo acabou...\nVou assumir que isso foi um não.",
-            GameOverUI.GameOverType.Hurt
-
-        );
-
-        retryCurrentAttempt = true;
-    }
-
     // Registra as tentativas de apertar no botão NÃO
     public void RegisterNaoAttempt()
     {
@@ -153,6 +134,27 @@ public class GameManager : MonoBehaviour
         );
     }
 
+    // Telas de GameOver personalizadas
+
+    // GameOver personalizado para caso o tempo esgote - Tentativas 5+
+    public void RegisterTimeOut()
+    {
+        isGameOver = true;
+        
+        InteractionUI.Instance.Hide();
+        playerMovement.DisableMovement();
+        TimerManager.Instance.StopTimer();
+        AttemptSystem.Instance.DisableAllLasers();
+
+        retryCurrentAttempt = true;
+
+        StartCoroutine(
+            ShowSpecialGameOverRoutine(
+                "O tempo acabou...\nVou assumir que isso foi um não."
+            )
+        );
+    }
+
     // GameOver personalizado para caso o player seja atingido pelo laser
     public void RegisterLaserHit()
     {
@@ -167,13 +169,29 @@ public class GameManager : MonoBehaviour
         AttemptSystem.Instance.DisableAllLasers();
         TimerManager.Instance.StopTimer();
 
-        GameOverUI.Instance.Show(
-            "Nem tente passar por aí..",
-            GameOverUI.GameOverType.Hurt
+        retryCurrentAttempt = true;
 
+        StartCoroutine(
+            ShowSpecialGameOverRoutine(
+                "Nem tente passar por aí.."
+            )
+        );
+    }
+
+    private IEnumerator ShowSpecialGameOverRoutine(string message)
+    {
+        yield return StartCoroutine(
+            FadeUI.Instance.FadeOutRoutine()
         );
 
-        retryCurrentAttempt = true;
+        GameOverUI.Instance.Show(
+            message,
+            GameOverUI.GameOverType.Hurt
+        );
+
+        yield return StartCoroutine(
+            FadeUI.Instance.FadeInRoutine()
+        );
     }
 
     // Mecânica para continuar jogo depois do gameover
