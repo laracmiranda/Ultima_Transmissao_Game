@@ -79,7 +79,7 @@ public class VictoryAnimator : MonoBehaviour
 
         typewriterEffect.ShowText(message);
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(10f);
 
         continueText.SetActive(true);
 

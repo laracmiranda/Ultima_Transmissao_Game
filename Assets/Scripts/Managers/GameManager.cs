@@ -97,7 +97,15 @@ public class GameManager : MonoBehaviour
         string message =
             GameTexts.NaoMessages[naoAttempts - 1];
 
+        yield return StartCoroutine(
+            FadeUI.Instance.FadeOutRoutine()
+        );
+
         GameOverUI.Instance.Show(message,GameOverUI.GameOverType.Falling);
+
+        yield return StartCoroutine(
+            FadeUI.Instance.FadeInRoutine()
+        );
     }
 
     // Registra em qual tentativa o botão SIM foi pressionado
@@ -132,8 +140,16 @@ public class GameManager : MonoBehaviour
             messageIndex = naoAttempts;
         }
 
+        yield return StartCoroutine(
+            FadeUI.Instance.FadeOutRoutine()
+        );
+
         VictoryUI.Instance.Show(
             GameTexts.SimMessages[messageIndex]
+        );
+
+        yield return StartCoroutine(
+            FadeUI.Instance.FadeInRoutine()
         );
     }
 
@@ -161,29 +177,49 @@ public class GameManager : MonoBehaviour
     }
 
     // Mecânica para continuar jogo depois do gameover
+
     public void ContinueGame()
     {
+        StartCoroutine(
+            ContinueGameRoutine()
+        );
+    }
 
-        // Reseta a tentativa atual caso o tempo acabar - Tentativas 5+
-        if (retryCurrentAttempt)
-        {
-            retryCurrentAttempt = false;
-            isGameOver = false;
-            GameOverUI.Instance.Hide();
-            RespawnPlayer();
-            AttemptSystem.Instance.ResetAttemptEffects();
-            AttemptSystem.Instance.ForceReapplyCurrentAttempt();
-            AttemptSystem.Instance.ApplyAttemptEffects(naoAttempts);
-            TimerManager.Instance.StartTimer();
-            return;
-        }
+    private IEnumerator ContinueGameRoutine()
+{
+    yield return StartCoroutine(
+        FadeUI.Instance.FadeOutRoutine()
+    );
 
+    // Reseta a tentativa atual caso o tempo acabar
+    if (retryCurrentAttempt)
+    {
+        retryCurrentAttempt = false;
         isGameOver = false;
+
         GameOverUI.Instance.Hide();
         RespawnPlayer();
         AttemptSystem.Instance.ResetAttemptEffects();
+        AttemptSystem.Instance.ForceReapplyCurrentAttempt();
         AttemptSystem.Instance.ApplyAttemptEffects(naoAttempts);
+
+        TimerManager.Instance.StartTimer();
+
+        yield return StartCoroutine(
+            FadeUI.Instance.FadeInRoutine()
+        );
+
+        yield break;
     }
+
+    isGameOver = false;
+    GameOverUI.Instance.Hide();
+    RespawnPlayer();
+    AttemptSystem.Instance.ResetAttemptEffects();
+    AttemptSystem.Instance.ApplyAttemptEffects(naoAttempts);
+
+    yield return StartCoroutine(FadeUI.Instance.FadeInRoutine());
+}
 
     // Mecânica de respawn do player para estado inicial
     private void RespawnPlayer()
