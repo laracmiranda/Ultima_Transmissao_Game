@@ -19,7 +19,7 @@ public class IntroUI : MonoBehaviour
 
     public IEnumerator PlayIntro()
     {
-
+        AudioManager.Instance.StopMusic();
         panel.SetActive(true);
 
         yield return StartCoroutine(

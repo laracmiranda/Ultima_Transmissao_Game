@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
         );
 
         GameOverUI.Instance.Show(message,GameOverUI.GameOverType.Falling);
+        AudioManager.Instance.PlayGameOverMusic();
 
         yield return StartCoroutine(
             FadeUI.Instance.FadeInRoutine()
@@ -125,9 +126,8 @@ public class GameManager : MonoBehaviour
             FadeUI.Instance.FadeOutRoutine()
         );
 
-        VictoryUI.Instance.Show(
-            GameTexts.SimMessages[messageIndex]
-        );
+        VictoryUI.Instance.Show(GameTexts.SimMessages[messageIndex]);
+        AudioManager.Instance.PlayVictoryMusic();
 
         yield return StartCoroutine(
             FadeUI.Instance.FadeInRoutine()
@@ -184,10 +184,8 @@ public class GameManager : MonoBehaviour
             FadeUI.Instance.FadeOutRoutine()
         );
 
-        GameOverUI.Instance.Show(
-            message,
-            GameOverUI.GameOverType.Hurt
-        );
+        GameOverUI.Instance.Show(message,GameOverUI.GameOverType.Hurt);
+        AudioManager.Instance.PlayGameOverMusic();
 
         yield return StartCoroutine(
             FadeUI.Instance.FadeInRoutine()
@@ -223,9 +221,8 @@ public class GameManager : MonoBehaviour
 
         TimerManager.Instance.StartTimer();
 
-        yield return StartCoroutine(
-            FadeUI.Instance.FadeInRoutine()
-        );
+        yield return StartCoroutine(FadeUI.Instance.FadeInRoutine());
+        AudioManager.Instance.PlayGameplayMusic();
 
         yield break;
     }
@@ -237,6 +234,7 @@ public class GameManager : MonoBehaviour
     AttemptSystem.Instance.ApplyAttemptEffects(naoAttempts);
 
     yield return StartCoroutine(FadeUI.Instance.FadeInRoutine());
+    AudioManager.Instance.PlayGameplayMusic();
 }
 
     // Mecânica de respawn do player para estado inicial

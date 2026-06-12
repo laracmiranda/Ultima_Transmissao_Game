@@ -17,7 +17,7 @@ public class StartUI : MonoBehaviour
     private void Start()
     {
         panel.SetActive(true);
-
+        AudioManager.Instance.PlayStartMusic();
         StartCoroutine(FadeUI.Instance.FadeInRoutine());
     }
 
@@ -54,6 +54,7 @@ public class StartUI : MonoBehaviour
         );
 
         waitingForStart = false;
+        AudioManager.Instance.PlayGameplayMusic();
     }
     
     public bool IsWaitingForStart()
