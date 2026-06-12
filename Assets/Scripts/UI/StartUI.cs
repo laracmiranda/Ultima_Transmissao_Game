@@ -46,12 +46,16 @@ public class StartUI : MonoBehaviour
         panel.SetActive(false);
 
         yield return StartCoroutine(
+            IntroUI.Instance.PlayIntro()
+        );
+
+        yield return StartCoroutine(
             FadeUI.Instance.FadeInRoutine()
         );
 
         waitingForStart = false;
     }
-
+    
     public bool IsWaitingForStart()
     {
         return waitingForStart;
