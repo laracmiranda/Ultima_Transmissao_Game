@@ -12,6 +12,12 @@ public class LaserController : MonoBehaviour
 
     [SerializeField] private float cooldownTime = 2f;
 
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    [SerializeField] private Sprite chargingSprite;
+
+    [SerializeField] private Sprite activeSprite;
+
     private Collider2D laserCollider;
     private SpriteRenderer laserRenderer;
 
@@ -39,16 +45,21 @@ public class LaserController : MonoBehaviour
         while (true)
         {
             laserRenderer.enabled = true;
+            spriteRenderer.sprite = chargingSprite;
 
             yield return new WaitForSeconds(warningTime);
 
             laserCollider.enabled = true;
+            spriteRenderer.sprite = activeSprite;
             laserActive = true;
+            AudioManager.Instance.PlayLaserActivateSound();
+
             yield return new WaitForSeconds(activeTime);
 
             laserCollider.enabled = false;
             laserRenderer.enabled = false;
             laserActive = false;
+
             yield return new WaitForSeconds(cooldownTime);
         }
     }

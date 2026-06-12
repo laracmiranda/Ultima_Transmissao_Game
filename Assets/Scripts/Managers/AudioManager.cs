@@ -6,8 +6,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
 
-    [SerializeField] private AudioClip buttonClick;
+    [SerializeField] private AudioClip laserActivateSound;
 
+    [SerializeField] private AudioClip buttonClick;
 
     [SerializeField] private AudioClip holeSound;
 
@@ -16,13 +17,21 @@ public class AudioManager : MonoBehaviour
         Instance = this;
     }
 
+    // Sons dos botões
     public void PlayButtonClick()
     {
         audioSource.PlayOneShot(buttonClick);
     }
 
+    // Som do buraco
     public void PlayHoleSound()
     {
         audioSource.PlayOneShot(holeSound);
+    }
+
+    // Sons do laser
+    public void PlayLaserActivateSound()
+    {
+        audioSource.PlayOneShot(laserActivateSound);
     }
 }

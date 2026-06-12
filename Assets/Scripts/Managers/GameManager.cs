@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
         InteractionUI.Instance.Hide();
         playerMovement.DisableMovement();
         TimerManager.Instance.StopTimer();
+        AttemptSystem.Instance.DisableAllLasers();
 
         GameOverUI.Instance.Show(
             "O tempo acabou...\nVou assumir que isso foi um não.",
@@ -149,7 +150,7 @@ public class GameManager : MonoBehaviour
         InteractionUI.Instance.Hide();
         AttemptSystem.Instance.DisableAllLasers();
         TimerManager.Instance.StopTimer();
-        
+
         GameOverUI.Instance.Show(
             "Nem tente passar por aí..",
             GameOverUI.GameOverType.Hurt
