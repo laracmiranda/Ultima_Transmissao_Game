@@ -25,8 +25,6 @@ public class VictoryUI : MonoBehaviour
         panel.SetActive(true);
 
         StartCoroutine(victoryAnimator.PlaySequence(message));
-
-        showingVictory = true;
     }
 
     public void EnableContinue()
