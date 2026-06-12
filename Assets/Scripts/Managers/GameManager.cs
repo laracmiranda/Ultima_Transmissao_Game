@@ -49,7 +49,9 @@ public class GameManager : MonoBehaviour
     public void RegisterTimeOut()
     {
         isGameOver = true;
-
+        
+        InteractionUI.Instance.Hide();
+        playerMovement.DisableMovement();
         TimerManager.Instance.StopTimer();
 
         GameOverUI.Instance.Show(
@@ -110,6 +112,8 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.PlayButtonClick();
 
         isGameOver = true;
+        InteractionUI.Instance.Hide();
+        playerMovement.DisableMovement();
         AttemptSystem.Instance.DisableAllLasers();
         TimerManager.Instance.StopTimer();
 
@@ -141,8 +145,9 @@ public class GameManager : MonoBehaviour
             
         isGameOver = true;
 
+        playerMovement.DisableMovement();
+        InteractionUI.Instance.Hide();
         AttemptSystem.Instance.DisableAllLasers();
-
         TimerManager.Instance.StopTimer();
         
         GameOverUI.Instance.Show(
