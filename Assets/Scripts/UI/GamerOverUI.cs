@@ -7,11 +7,21 @@ public class GameOverUI : MonoBehaviour
 {
     public static GameOverUI Instance;
 
+    public enum GameOverType
+    {
+        Falling,
+        Hurt
+    }
+
     [SerializeField] private GameObject panel;
     [SerializeField] private TMP_Text gameOverText;
     [SerializeField] private TypewriterEffect typewriterEffect;
 
     [SerializeField] private RectTransform fallingPlayer;
+    [SerializeField] private GameObject fallingPlayerObject;
+
+    [SerializeField] private GameObject hurtPlayerObject;
+
     private Coroutine fallingRoutine;
 
     private void Awake()
@@ -19,10 +29,19 @@ public class GameOverUI : MonoBehaviour
         Instance = this;
     }
 
-    public void Show(string message)
+    public void Show(string message, GameOverType type)
     {
         InteractionUI.Instance.Hide();
         panel.SetActive(true);
+
+        fallingPlayerObject.SetActive(
+        type == GameOverType.Falling
+        );
+
+        hurtPlayerObject.SetActive(
+            type == GameOverType.Hurt
+        );
+        
         typewriterEffect.ShowText(message);
 
         if (fallingRoutine != null)

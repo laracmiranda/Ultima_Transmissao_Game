@@ -53,7 +53,9 @@ public class GameManager : MonoBehaviour
         TimerManager.Instance.StopTimer();
 
         GameOverUI.Instance.Show(
-            "O tempo acabou...\nVou assumir que isso foi um não."
+            "O tempo acabou...\nVou assumir que isso foi um não.",
+            GameOverUI.GameOverType.Hurt
+
         );
 
         retryCurrentAttempt = true;
@@ -92,7 +94,7 @@ public class GameManager : MonoBehaviour
         string message =
             GameTexts.NaoMessages[naoAttempts - 1];
 
-        GameOverUI.Instance.Show(message);
+        GameOverUI.Instance.Show(message,GameOverUI.GameOverType.Falling);
     }
 
     // Registra em qual tentativa o botão SIM foi pressionado
@@ -144,7 +146,9 @@ public class GameManager : MonoBehaviour
         TimerManager.Instance.StopTimer();
         
         GameOverUI.Instance.Show(
-            "Nem tente passar por aí.."
+            "Nem tente passar por aí..",
+            GameOverUI.GameOverType.Hurt
+
         );
 
         retryCurrentAttempt = true;
