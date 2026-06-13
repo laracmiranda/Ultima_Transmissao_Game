@@ -27,7 +27,7 @@ public class IntroUI : MonoBehaviour
         );
 
         typewriterEffect.ShowText(
-            "Tenho uma pergunta para você..."
+            "Tenho uma pergunta antes de chegarmos..."
         );
 
         yield return new WaitForSeconds(4f);

@@ -9,25 +9,25 @@ public static class GameTexts
         "Você fez denovo.. interessante. Vou garantir que o próximo você não se confunda!",
 
         // Tentativa 3
-        "Você deveria estar apertando SIM agora. Acho que preciso deixar mais óbvio",
+        "Você sabe que existe outro botão disponível, certo?",
 
         // Tentativa 4
-        "Você já tentou o outro botão brilhante?!",
+        "Estou começando a achar que você está se divertindo com isso...",
 
         // Tentativa 5
-        "Acho que seu teclado está invertido... vou arrumar pra você!",
+        "Acho que seus controles estão invertidos... vou arrumar pra você!",
 
         // Tentativa 6
-        "Ok. Já que você gosta de ficar no escuro. FIQUE!",
+        "Você realmente pretende continuar fazendo isso?",
 
         // Tentativa 7
-        "Por que está fazendo isso comigo?",
+        "Eu passei a viagem inteira criando esse momento, sabia?",
 
         // Tentativa 8
         "Achei que gostava de mim... e os momentos que passamos juntos?",
 
         // Tentativa 9
-        "É.. você me deixou sem opções...",
+        "Estou ficando sem truques... e um pouco sem dignidade também.",
 
         // Tentativa 10
         "Tá bom... acho que entendi. Mas antes de você ir..."
@@ -45,16 +45,16 @@ public static class GameTexts
         "Te enganei, muehehe! \nEu estava aqui o tempo todo esperando você voltar. ♥",
 
         // Tentativa 4
-        "Mesmo depois de tudo, você acabou me encontrando. Impressionante. ♥",
+        "Você demorou um pouco, mas encontrou o caminho até mim. ♥",
 
         // Tentativa 5
-        "O tempo estava correndo... mas você ainda escolheu ficar. ♥",
+        "Valeu a pena esperar pela resposta. ♥",
 
         // Tentativa 6
         "Mesmo quando tudo parecia ao contrário, você encontrou o caminho. ♥",
 
         // Tentativa 7
-        "Nem a escuridão conseguiu esconder o que realmente importava. ♥",
+        "Depois de tudo isso, acho que a viagem valeu a pena. ♥",
 
         // Tentativa 8
         "O mundo inteiro parecia quebrado, mas você continuou tentando. ♥",
@@ -63,6 +63,6 @@ public static class GameTexts
         "Você enfrentou tudo o que eu pude inventar. Acho que já provou seu ponto. ♥",
 
         // Tentativa 10
-        "Eu sabia que, no fim, seria eu. Obrigado por ficar até aqui. ♥"
+        "Se o universo fosse acabar hoje... eu escolheria passar o último instante com você. ♥"
     };
 }
