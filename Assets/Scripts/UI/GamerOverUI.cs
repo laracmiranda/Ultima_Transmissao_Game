@@ -83,7 +83,7 @@ public class GameOverUI : MonoBehaviour
         while (true)
         {
             fallingPlayer.anchoredPosition =
-                new Vector2(0f, 300f);
+                new Vector2(0f, 120f);
 
             while (
                 fallingPlayer.anchoredPosition.y > -300f
