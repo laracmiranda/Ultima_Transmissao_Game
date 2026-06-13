@@ -91,7 +91,7 @@ public class GameOverUI : MonoBehaviour
             {
                 fallingPlayer.anchoredPosition +=
                     Vector2.down *
-                    250f *
+                    200f *
                     Time.deltaTime;
 
                 yield return null;

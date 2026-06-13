@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         playerMovement.DisableMovement();
         TimerManager.Instance.StopTimer();
+        AttemptSystem.Instance.DisableAllLasers();
 
         yield return new WaitForSeconds(0.4f);
         AudioManager.Instance.PlayHoleSound();
