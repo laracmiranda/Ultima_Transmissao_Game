@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     private bool invertedControls;
+    private bool footstepsPlaying;
 
     private Animator animator;
 
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = normalSpeed;
     }
 
+    // Lê a entrada do jogador para movimentação
     private void Update()
     {
         if (GameManager.Instance.isGameOver)
@@ -60,10 +62,24 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipX = true;
         }
 
+        // Controla a animação de movimento
         bool isMoving = movement.sqrMagnitude > 0;
         animator.SetBool("IsMoving", isMoving);
+
+        // Controla o som dos passos
+        if (isMoving && !footstepsPlaying)
+        {
+            AudioManager.Instance.StartFootsteps();
+            footstepsPlaying = true;
+        }
+        else if (!isMoving && footstepsPlaying)
+        {
+            AudioManager.Instance.StopFootsteps();
+            footstepsPlaying = false;
+        }
     }
 
+    // Aplica o movimento do personagem usando física
     private void FixedUpdate()
     {
         rb.linearVelocity = movement.normalized * currentSpeed;
@@ -92,11 +108,15 @@ public class PlayerMovement : MonoBehaviour
         movement = Vector2.zero;
         rb.linearVelocity = Vector2.zero;
 
+        AudioManager.Instance.StopFootsteps();
+        footstepsPlaying = false;
+
         enabled = false;
     }
 
     public void EnableMovement()
     {
+        footstepsPlaying = false;
         enabled = true;
     }
 

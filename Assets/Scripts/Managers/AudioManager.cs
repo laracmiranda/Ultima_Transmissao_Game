@@ -7,6 +7,10 @@ public class AudioManager : MonoBehaviour
     
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource footstepSource;
+
+    [Header("Footsteps")]
+    [SerializeField] private AudioClip footstepSound;
 
     [Header("SFX")]
     // SFX
@@ -96,5 +100,21 @@ public class AudioManager : MonoBehaviour
     public void PlayLaserActivateSound()
     {
         sfxSource.PlayOneShot(laserActivateSound);
+    }
+
+    // Sons dos passos
+    public void StartFootsteps()
+    {
+        if (footstepSource.isPlaying)
+            return;
+
+        footstepSource.clip = footstepSound;
+        footstepSource.loop = true;
+        footstepSource.Play();
+    }
+
+    public void StopFootsteps()
+    {
+        footstepSource.Stop();
     }
 }
