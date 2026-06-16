@@ -63,6 +63,7 @@ public class VictoryUI : MonoBehaviour
             FadeUI.Instance.FadeInRoutine()
         );
 
+        AudioManager.Instance.PlayVictoryMusic();
         cutscenePanel.SetActive(true);
 
         // Verificar se é um final especial
@@ -89,6 +90,7 @@ public class VictoryUI : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.PlayVictoryMusic();
             cutscenePlayer.StartLoopCutscene();
         }
 

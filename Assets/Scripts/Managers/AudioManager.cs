@@ -37,13 +37,9 @@ public class AudioManager : MonoBehaviour
             return;
 
         musicSource.Stop();
-
         currentMusic = clip;
-
         musicSource.clip = clip;
-
         musicSource.loop = loop;
-
         musicSource.Play();
     }
     // Música do início

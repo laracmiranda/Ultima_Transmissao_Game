@@ -128,7 +128,6 @@ public class GameManager : MonoBehaviour
         );
 
         VictoryUI.Instance.Show(GameTexts.SimMessages[messageIndex]);
-        AudioManager.Instance.PlayVictoryMusic();
 
         yield return StartCoroutine(
             FadeUI.Instance.FadeInRoutine()
