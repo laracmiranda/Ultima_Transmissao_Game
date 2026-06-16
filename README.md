@@ -22,7 +22,7 @@ Pequeno jogo narrativo em pixel art criado de presente para o dia dos namorados,
 <img src="./Assets/Sprites/UI/StartPanel.png" alt="Game Preview" width="480"/>
 
 ### Gameplay
-<img src="" alt="Game Preview" width="480"/>
+<img src="https://github.com/user-attachments/assets/63699d4f-429d-4de9-9e89-42ab33ec36ea" alt="Game Preview" width="480"/>
 
 ---
 
