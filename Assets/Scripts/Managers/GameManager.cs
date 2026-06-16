@@ -34,6 +34,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Screen.SetResolution(
+            640,
+            360,
+            FullScreenMode.Windowed
+        );
+        
         if (Instance == null)
         {
             Instance = this;
