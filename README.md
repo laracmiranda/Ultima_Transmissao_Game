@@ -9,7 +9,7 @@
 
 Pequeno jogo narrativo em pixel art criado de presente para o dia dos namorados, como uma forma divertida de fazer a pergunta mais importante do dia! (E aprimorar os conhecimentos de C#)
 
-💜 Você pode [baixar aqui]()
+💜 Você pode [baixar aqui](https://github.com/laracmiranda/Ultima_Transmissao_Game/releases/download/v1.1.0/Ultima.Transmissao.zip)
 > *Link para gameplay online ainda não disponível*
 
 ---
