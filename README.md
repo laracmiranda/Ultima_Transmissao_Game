@@ -104,8 +104,6 @@ Copyright (c) 2026 Lara Miranda
 
 Este projeto foi desenvolvido para fins pessoais e de portfólio.
 
-Todos os direitos reservados.
-
 ---
 
 > 💜 *"Tenho uma pergunta para você..."*
